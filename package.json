@@ -18,6 +18,10 @@
   "homepage": "https://github.com/kyimmQ/socmed-backend#readme",
   "description": "",
   "devDependencies": {
+    "@types/express": "^5.0.3",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
