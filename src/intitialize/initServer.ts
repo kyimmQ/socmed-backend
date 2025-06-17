@@ -7,6 +7,8 @@ import compression from "compression";
 import cookieSession from "cookie-session";
 import HTTP_STATUS from "http-status-codes";
 
+const SERVER_POST = 5000;
+
 export class Server {
   private app: Application;
   constructor(app: Application) {
@@ -51,9 +53,20 @@ export class Server {
 
   private globalErrorHandler(app: Application): void {}
 
-  private startServer(app: Application): void {}
+  private startServer(app: Application): void {
+    try {
+      const httpServer: http.Server = new http.Server(app);
+      this.startHttpServer(httpServer);
+    } catch (error) {
+      console.error("Error starting server:", error);
+    }
+  }
 
   private createSocketIO(httpServer: http.Server): void {}
 
-  private startHttpServer(httpServer: http.Server): void {}
+  private startHttpServer(httpServer: http.Server): void {
+    httpServer.listen(SERVER_POST, () => {
+      console.log(`Server is running on port ${SERVER_POST}`);
+    });
+  }
 }
